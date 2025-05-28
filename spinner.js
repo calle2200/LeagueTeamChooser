@@ -74,8 +74,6 @@ allPlayers.forEach(player => {
   playerList.appendChild(card);
 });
 
-
-
 function addPlayerCard(player) {
   const placeholders = document.querySelectorAll(".placeholder");
   const index = selectedPlayers.length - 1;
@@ -112,11 +110,11 @@ function removePlayerCard(name) {
       });
     });
 
-    // Lägg tillbaka i vänlistan
+    // Lägg tillbaka i vänlistan med rätt klass och struktur
     const card = document.createElement("div");
-    card.className = "player-card";
+    card.className = "player-list-item";
     card.innerHTML = `
-      <img src="${removedPlayer.img}" alt="${removedPlayer.name}" class="player-img">
+      <img src="${removedPlayer.img}" alt="${removedPlayer.name}" class="list-player-img">
       <span class="player-name">${removedPlayer.name}</span>
     `;
     card.addEventListener("click", () => {
@@ -135,8 +133,6 @@ function removePlayerCard(name) {
     updateSelectedCount();
   }
 }
-
-
 
 function updateSelectedCount() {
   selectedCountEl.textContent = selectedPlayers.length;
