@@ -50,24 +50,36 @@ let round = 0;
 let usedRolesTeam1 = new Set();
 let usedRolesTeam2 = new Set();
 
+function updatePlayerStatusUI(name, isSelected) {
+  const statusEl = document.querySelector(`.player-list-item[data-name="${name}"] .status`);
+  if (statusEl) {
+    statusEl.textContent = isSelected ? "In Game" : "Offline";
+    statusEl.classList.toggle("in-game", isSelected);
+    statusEl.classList.toggle("offline", !isSelected);
+  }
+}
+
 allPlayers.forEach(player => {
   const card = document.createElement("div");
   card.className = "player-list-item";
+  card.setAttribute("data-name", player.name);
   card.innerHTML = `
     <img src="${player.img}" alt="${player.name}" class="list-player-img">
-    <span class="player-name">${player.name}</span>
+    <div class="player-info">
+      <span class="player-name">${player.name}</span>
+      <span class="status offline">Offline</span>
+    </div>
   `;
   card.addEventListener("click", () => {
     if (selectedPlayers.length >= 10) {
       errorDisplay.textContent = "Du kan bara välja 10 spelare.";
       return;
     }
-
     if (selectedPlayers.find(p => p.name === player.name)) return;
 
     selectedPlayers.push(player);
     addPlayerCard(player);
-    card.remove();
+    updatePlayerStatusUI(player.name, true);
     updateSelectedCount();
   });
 
@@ -84,8 +96,6 @@ function addPlayerCard(player) {
       <img src="${player.img}" alt="${player.name}" class="player-img clickable">
       <span class="player-name">${player.name}</span>
     `;
-    
-    // Gör spelaren klickbar för att ta bort
     slot.querySelector(".player-img").addEventListener("click", () => {
       removePlayerCard(player.name);
     });
@@ -95,8 +105,7 @@ function addPlayerCard(player) {
 function removePlayerCard(name) {
   const index = selectedPlayers.findIndex(p => p.name === name);
   if (index !== -1) {
-    const removedPlayer = selectedPlayers.splice(index, 1)[0];
-
+    selectedPlayers.splice(index, 1);
     const placeholders = document.querySelectorAll(".placeholder");
     placeholders.forEach(ph => ph.innerHTML = "");
 
@@ -110,26 +119,7 @@ function removePlayerCard(name) {
       });
     });
 
-    // Lägg tillbaka i vänlistan med rätt klass och struktur
-    const card = document.createElement("div");
-    card.className = "player-list-item";
-    card.innerHTML = `
-      <img src="${removedPlayer.img}" alt="${removedPlayer.name}" class="list-player-img">
-      <span class="player-name">${removedPlayer.name}</span>
-    `;
-    card.addEventListener("click", () => {
-      if (selectedPlayers.length >= 10) {
-        errorDisplay.textContent = "Du kan bara välja 10 spelare.";
-        return;
-      }
-      if (selectedPlayers.find(p => p.name === removedPlayer.name)) return;
-      selectedPlayers.push(removedPlayer);
-      addPlayerCard(removedPlayer);
-      card.remove();
-      updateSelectedCount();
-    });
-
-    playerList.appendChild(card);
+    updatePlayerStatusUI(name, false);
     updateSelectedCount();
   }
 }
@@ -269,4 +259,6 @@ function resetGame() {
   document.querySelectorAll("input[type='checkbox']").forEach(cb => cb.checked = false);
   selectedPlayersDiv.innerHTML = "";
   updateSelectedCount();
+
+  allPlayers.forEach(p => updatePlayerStatusUI(p.name, false));
 }
