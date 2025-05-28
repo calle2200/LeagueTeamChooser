@@ -35,7 +35,8 @@ body {
     width: 80%;
     min-height: 500px;
     border: 2px dashed #fff;
-    padding: 10px;
+    padding: 20px;
+    padding-left: 50px;
     border-radius: 10px;
 }
 
