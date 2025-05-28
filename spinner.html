@@ -174,36 +174,38 @@
   <button class="btn hidden" id="rollBtn" onclick="roll()">Snurra!</button>
   <div class="popup" id="popup"></div>
 
+  <button class="btn hidden" id="resetBtn" onclick="resetGame()">Börja om</button>
+
   <script>
     const allPlayers = [
-      { name: "FatNeek", img: "alistar.jpg" },
-      { name: "Dedona", img: "icon.png" },
-      { name: "Stahlet", img: "ezreal.png" },
-      { name: "Simpa", img: "sylas.webp" },
-      { name: "LolSpelare", img: "yone.jpg" },
-      { name: "Skalander", img: "voli.jpg" },
-      { name: "Luigi", img: "sion.webp" },
-      { name: "2Camel", img: "rammus.jpg" },
-      { name: "Moses", img: "icon.png" },
-      { name: "Pelle", img: "icon.png" },
-      { name: "Rez", img: "icon.png" },
-      { name: "Lampskaerm", img: "icon.png" },
-      { name: "Daddyshooker", img: "icon.png" },
-      { name: "Fnorkos", img: "icon.png" },
-      { name: "Saedobity", img: "icon.png" },
-      { name: "Guest1", img: "icon.png" },
-      { name: "Guest2", img: "icon.png" },
-      { name: "Guest3", img: "icon.png" },
-      { name: "Guest4", img: "icon.png" },
-      { name: "Guest5", img: "icon.png" }
+      { name: "FatNeek", img: "images/icons/alistar.jpg" },
+      { name: "Dedona", img: "images/icons/icon.png" },
+      { name: "Stahlet", img: "images/icons/ezreal.png" },
+      { name: "Simpa", img: "images/icons/sylas.webp" },
+      { name: "LolSpelare", img: "images/icons/yone.jpg" },
+      { name: "Skalander", img: "images/icons/voli.jpg" },
+      { name: "Luigi", img: "images/icons/sion.webp" },
+      { name: "2Camel", img: "images/icons/rammus.jpg" },
+      { name: "Moses", img: "images/icons/icon.png" },
+      { name: "Pelle", img: "images/icons/icon.png" },
+      { name: "Rez", img: "images/icons/icon.png" },
+      { name: "Lampskaerm", img: "images/icons/icon.png" },
+      { name: "Daddyshooker", img: "images/icons/icon.png" },
+      { name: "Fnorkos", img: "images/icons/icon.png" },
+      { name: "Saedobity", img: "images/icons/icon.png" },
+      { name: "Guest1", img: "images/icons/icon.png" },
+      { name: "Guest2", img: "images/icons/icon.png" },
+      { name: "Guest3", img: "images/icons/icon.png" },
+      { name: "Guest4", img: "images/icons/icon.png" },
+      { name: "Guest5", img: "images/icons/icon.png" }
     ];
 
     const roleImages = [
-      { role: "toplane", img: "toplane.png" },
-      { role: "jungle", img: "jungle.png" },
-      { role: "midlane", img: "midlane.png" },
-      { role: "botlane", img: "botlane.png" },
-      { role: "support", img: "support.png" }
+      { role: "Toplane", img: "images/lanes/toplane.png" },
+      { role: "Jungle", img: "images/lanes/jungle.png" },
+      { role: "Midlane", img: "images/lanes/midlane.png" },
+      { role: "Botlane", img: "images/lanes/botlane.png" },
+      { role: "Support", img: "images/lanes/support.png" }
     ];
 
     const playerList = document.getElementById("playerList");
@@ -271,6 +273,7 @@
       gameSection.classList.remove("hidden");
       carouselContainer.classList.remove("hidden");
       rollBtn.classList.remove("hidden");
+      resetBtn.classList.remove("hidden");
       renderCarousel();
     }
 
@@ -344,6 +347,37 @@
         }, 3100);
       }, 50);
     }
+
+    function resetGame() {
+    // Nollställ all logik och UI
+    round = 0;
+    usedRolesTeam1.clear();
+    usedRolesTeam2.clear();
+    availableItems = [];
+
+    // Töm lag
+    team1.innerHTML = "<h3>Lag 1</h3>";
+    team2.innerHTML = "<h3>Lag 2</h3>";
+
+    // Töm rullband
+    carousel.innerHTML = "";
+
+    // Visa setup-sektionen
+    setupSection.classList.remove("hidden");
+
+    // Dölj spelet
+    gameSection.classList.add("hidden");
+    carouselContainer.classList.add("hidden");
+    rollBtn.classList.add("hidden");
+    resetBtn.classList.add("hidden");
+
+    // Återställ popup
+    popup.style.display = "none";
+
+    // Avmarkera alla checkboxes
+    document.querySelectorAll("input[type='checkbox']").forEach(cb => cb.checked = false);
+}
+
   </script>
 </body>
 
