@@ -40,7 +40,7 @@ const carouselContainer = document.getElementById("carouselContainer");
 const rollBtn = document.getElementById("rollBtn");
 const resetBtn = document.getElementById("resetBtn");
 const carousel = document.getElementById("carousel");
-const popup = document.getElementById("popup");
+
 const team1 = document.getElementById("team1");
 const team2 = document.getElementById("team2");
 
@@ -183,7 +183,7 @@ function roll() {
   }
 
   const isSecondLastSpin = availableItems.length === 2;
-  popup.style.display = "none";
+  
   carousel.style.transition = "none";
   carousel.style.transform = `translateX(0px)`;
 
@@ -240,8 +240,7 @@ function roll() {
         round++;
       }
 
-      popup.textContent = message;
-      popup.style.display = "block";
+      
       renderCarousel();
     }, 3100);
   }, 50);
@@ -263,7 +262,7 @@ function resetGame() {
   carouselContainer.classList.add("hidden");
   rollBtn.classList.add("hidden");
   resetBtn.classList.add("hidden");
-  popup.style.display = "none";
+  
 
   document.querySelectorAll("input[type='checkbox']").forEach(cb => cb.checked = false);
 
