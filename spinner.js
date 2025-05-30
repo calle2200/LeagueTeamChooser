@@ -92,6 +92,7 @@ function addPlayerCard(player) {
 
   if (index < placeholders.length) {
     const slot = placeholders[index];
+    slot.classList.add("filled"); // 💡 Lägg till glow
     slot.innerHTML = `
       <img src="${player.img}" alt="${player.name}" class="player-img clickable">
       <span class="player-name">${player.name}</span>
@@ -106,14 +107,21 @@ function removePlayerCard(name) {
   const index = selectedPlayers.findIndex(p => p.name === name);
   if (index !== -1) {
     selectedPlayers.splice(index, 1);
+
     const placeholders = document.querySelectorAll(".placeholder");
-    placeholders.forEach(ph => ph.innerHTML = "");
+
+    placeholders.forEach(ph => {
+      ph.innerHTML = "";
+      ph.classList.remove("filled");
+    });
 
     selectedPlayers.forEach((player, i) => {
       placeholders[i].innerHTML = `
         <img src="${player.img}" alt="${player.name}" class="player-img clickable">
         <span class="player-name">${player.name}</span>
       `;
+      placeholders[i].classList.add("filled");
+
       placeholders[i].querySelector(".player-img").addEventListener("click", () => {
         removePlayerCard(player.name);
       });
@@ -123,6 +131,7 @@ function removePlayerCard(name) {
     updateSelectedCount();
   }
 }
+
 
 function updateSelectedCount() {
   selectedCountEl.textContent = selectedPlayers.length;
@@ -257,8 +266,19 @@ function resetGame() {
   popup.style.display = "none";
 
   document.querySelectorAll("input[type='checkbox']").forEach(cb => cb.checked = false);
-  selectedPlayersDiv.innerHTML = "";
+
+  // Töm och återställ alla placeholders
+  const placeholders = document.querySelectorAll(".placeholder");
+  placeholders.forEach(ph => {
+    ph.innerHTML = "";
+    ph.classList.remove("filled");
+  });
+
+  // Du behöver inte tömma selectedPlayersDiv om du inte lägger något där
+  // selectedPlayersDiv.innerHTML = ""; // Kan tas bort
+
   updateSelectedCount();
 
   allPlayers.forEach(p => updatePlayerStatusUI(p.name, false));
 }
+

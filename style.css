@@ -1,52 +1,77 @@
 body {
-    font-family: sans-serif;
-    background: #121212;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
+  font-family: 'Roboto', sans-serif;
+  background: #121212;
+  color: #dad2b3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
 }
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
 .setup {
-    margin-bottom: 30px;
-    text-align: center;
-    width: 100%;
+  margin-bottom: 30px;
+  text-align: center;
+  width: 100%;
 }
 
 .setup-layout {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .selected-players {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    width: 80%;
-    min-height: 500px;
-    max-height: 500px;
-    border: 2px dashed #fff;
-    padding: 10px;
-    padding-left: 50px;
-    border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: center;
+  column-gap: 50px;
+  background-color: #000614;
+  width: 80%;
+  min-height: 500px;
+  max-height: 500px;
+  border: 2px solid #685500;
+  padding: 10px 50px;
+  border-radius: 10px;
 }
 
 .placeholder {
-    width: 120px;
-    height: 120px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    margin-top: 20px;
+  width: 120px;
+  height: 120px;
+  border: 2px solid #685500;
+  border-radius: 50%;
+  margin-top: 15px;
+  background: #1e1e1e;
+  box-shadow: 0 0 5px #fff2, 0 0 10px #fff1 inset;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.placeholder.filled {
+  border: none;
+  box-shadow: 0 0 12px #4aa8ff, 0 0 25px #4aa8ff66;
+  animation: pulse 1s ease;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 12px #4aa8ff, 0 0 25px #4aa8ff66;
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #4aa8ff, 0 0 35px #4aa8ffaa;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 12px #4aa8ff, 0 0 25px #4aa8ff66;
+  }
 }
 
 .placeholder img.player-img {
@@ -64,45 +89,61 @@ body {
 }
 
 .selected-player-card {
-    background: #1e1e1e;
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    border: 1px solid #444;
+  background: #1e1e1e;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid #444;
 }
 
 .selected-player-card img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .selected-player-card button {
-    background: red;
-    border: none;
-    color: white;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
+  background: red;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
 }
 
 .player-list {
-    width: 20%;
-    max-height: 500px;
-    overflow-y: auto;
-    border: 1px solid #fff;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #1a1a1a;
+  width: 20%;
+  max-height: 500px;
+  overflow-y: auto;
+  border: 2px solid #685500;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #000614;
+
+  scrollbar-width: thin;
+  scrollbar-color: #685500 transparent;
+}
+
+.player-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.player-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.player-list::-webkit-scrollbar-thumb {
+  background-color: #685500;
+  border-radius: 4px;
 }
 
 .player-list label {
-    display: block;
-    margin: 5px 0;
+  display: block;
+  margin: 5px 0;
 }
 
 .player-card {
@@ -115,6 +156,7 @@ body {
   cursor: pointer;
   transition: transform 0.2s;
 }
+
 .player-card:hover {
   transform: scale(1.05);
 }
@@ -143,7 +185,8 @@ body {
 }
 
 .player-list-item:hover {
-  background-color: #1e1e1e; /* mörkare hover likt LoL-klienten */
+  background-color: #1e1e1e;
+  /* mörkare hover likt LoL-klienten */
 }
 
 .list-player-img {
@@ -156,7 +199,8 @@ body {
 
 .player-name {
   font-size: 14px;
-  color: #eee;
+  color: #dad2b3;
+  font-weight: bold;
 }
 
 .status {
@@ -180,114 +224,126 @@ body {
 }
 
 .teams {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 20px;
 }
 
 .team {
-    border: 2px solid white;
-    padding: 10px;
-    border-radius: 10px;
-    width: 30%;
-    height: 500px;
-    overflow-y: auto;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 30%;
+  height: 500px;
+  overflow-y: auto;
 }
 
 .team h3 {
-    text-align: center;
-    margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .carousel-container {
-    overflow: hidden;
-    width: 300px;
-    height: 100px;
-    border: 3px solid #fff;
-    margin: 20px 0;
-    position: relative;
+  overflow: hidden;
+  width: 300px;
+  height: 100px;
+  border: 3px solid #fff;
+  margin: 20px 0;
+  position: relative;
 }
 
 .carousel {
-    display: flex;
-    transition: transform 3s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  transition: transform 3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .item {
-    width: 100px;
-    height: 100px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 14px;
-    color: #fff;
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
 }
 
 .item img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-bottom: 5px;
-    border: 2px solid #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  border: 2px solid #fff;
 }
 
 .indicator {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    border-left: 3px solid red;
-    z-index: 2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 3px solid red;
+  z-index: 2;
 }
 
 .btn {
-    padding: 10px 20px;
-    background: #2196f3;
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
+  padding: 12px 32px;
+  background: linear-gradient(145deg, #0a2a43, #113456);
+  color: #f0e6d2;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 2px solid #685500;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00000055;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn:hover {
+  background: linear-gradient(145deg, #113456, #1b3c66);
+  box-shadow: 0 0 12px #685500;
+  color: #fff4d0;
+  transform: scale(1.03);
 }
 
 .popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #222;
-    padding: 30px;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    font-size: 24px;
-    display: none;
-    z-index: 10;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #222;
+  padding: 30px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  font-size: 24px;
+  display: none;
+  z-index: 10;
 }
 
 .team-player {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    font-size: 18px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 18px;
 }
 
 .team-player img.player-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-    border: 2px solid #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #fff;
 }
 
 .team-player img.role-img {
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
 }
