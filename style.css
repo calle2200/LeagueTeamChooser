@@ -64,10 +64,12 @@ body {
     transform: scale(1);
     box-shadow: 0 0 12px #4aa8ff, 0 0 25px #4aa8ff66;
   }
+
   50% {
     transform: scale(1.05);
     box-shadow: 0 0 20px #4aa8ff, 0 0 35px #4aa8ffaa;
   }
+
   100% {
     transform: scale(1);
     box-shadow: 0 0 12px #4aa8ff, 0 0 25px #4aa8ff66;
@@ -335,4 +337,21 @@ body {
   width: 30px;
   height: 30px;
   margin-left: 10px;
+}
+
+
+@media screen and (max-width: 1440px) {
+  .selected-players {
+    min-height: 400px;
+    max-height: 400px;
+  }
+
+  .player-list {
+    max-height: 400px;
+  }
+
+  .placeholder {
+  width: 100px;
+  height: 100px;
+}
 }
