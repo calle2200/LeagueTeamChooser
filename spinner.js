@@ -1,33 +1,3 @@
-const allPlayers = [
-  { name: "FatNeek", img: "images/icons/alistar.jpg" },
-  { name: "Dedona", img: "images/icons/icon.png" },
-  { name: "Stahlet", img: "images/icons/ezreal.png" },
-  { name: "Simpa", img: "images/icons/sylas.webp" },
-  { name: "LolSpelare", img: "images/icons/yone.jpg" },
-  { name: "Skalander", img: "images/icons/voli.jpg" },
-  { name: "Luigi", img: "images/icons/sion.webp" },
-  { name: "2Camel", img: "images/icons/rammus.jpg" },
-  { name: "Moses", img: "images/icons/icon.png" },
-  { name: "Pelle", img: "images/icons/icon.png" },
-  { name: "Rez", img: "images/icons/icon.png" },
-  { name: "Lampskaerm", img: "images/icons/icon.png" },
-  { name: "Daddyshooker", img: "images/icons/icon.png" },
-  { name: "Fnorkos", img: "images/icons/icon.png" },
-  { name: "Saedobity", img: "images/icons/icon.png" },
-  { name: "Guest1", img: "images/icons/icon.png" },
-  { name: "Guest2", img: "images/icons/icon.png" },
-  { name: "Guest3", img: "images/icons/icon.png" },
-  { name: "Guest4", img: "images/icons/icon.png" },
-  { name: "Guest5", img: "images/icons/icon.png" }
-];
-
-const roleImages = [
-  { role: "Toplane", img: "images/lanes/toplane.png" },
-  { role: "Jungle", img: "images/lanes/jungle.png" },
-  { role: "Midlane", img: "images/lanes/midlane.png" },
-  { role: "Botlane", img: "images/lanes/botlane.png" },
-  { role: "Support", img: "images/lanes/support.png" }
-];
 
 const playerList = document.getElementById("playerList");
 const selectedPlayersDiv = document.getElementById("selectedPlayers");
@@ -192,6 +162,7 @@ function roll() {
     const itemsPerLoop = availableItems.length;
     const baseIndex = itemsPerLoop + Math.floor(Math.random() * itemsPerLoop);
     const offset = (baseIndex - 1) * itemWidth;
+    
 
     carousel.style.transition = "transform 3s cubic-bezier(0.22, 1, 0.36, 1)";
     carousel.style.transform = `translateX(-${offset}px)`;
@@ -214,7 +185,7 @@ function roll() {
       `;
       currentTeam.appendChild(newDiv);
 
-      let message = `🎉 ${selected.name} går till ${round % 2 === 0 ? "Lag 1" : "Lag 2"} som ${role.role}!`;
+      let message = ` ${selected.name} går till ${round % 2 === 0 ? "Lag 1" : "Lag 2"} som ${role.role}!`;
       availableItems = availableItems.filter(p => p.name !== selected.name);
       round++;
 
