@@ -20,6 +20,17 @@ let round = 0;
 let usedRolesTeam1 = new Set();
 let usedRolesTeam2 = new Set();
 
+// 🔹 Läs in valda spelare från localStorage
+const storedPlayers = localStorage.getItem("selectedPlayers");
+if (storedPlayers) {
+  selectedPlayers = JSON.parse(storedPlayers);
+  availableItems = [...selectedPlayers];
+  renderCarousel();
+
+  localStorage.removeItem("selectedPlayers");
+}
+
+
 function updatePlayerStatusUI(name, isSelected) {
   const statusEl = document.querySelector(`.player-list-item[data-name="${name}"] .status`);
   if (statusEl) {
@@ -136,12 +147,11 @@ function startGame() {
     return;
   }
 
+  localStorage.setItem("selectedPlayers", JSON.stringify(selectedPlayers));
+
+  window.location.href = "spinner.html";
+
   availableItems = [...selectedPlayers];
-  setupSection.classList.add("hidden");
-  gameSection.classList.remove("hidden");
-  carouselContainer.classList.remove("hidden");
-  rollBtn.classList.remove("hidden");
-  resetBtn.classList.remove("hidden");
 
   renderCarousel();
 }
@@ -174,6 +184,7 @@ function roll() {
 
       const role = getAvailableRole(usedRoles);
       usedRoles.add(role.role);
+      playFitSound(selected, role.role);
 
       const newDiv = document.createElement("div");
       newDiv.className = "team-player";
@@ -195,6 +206,7 @@ function roll() {
         const otherRoles = round % 2 === 0 ? usedRolesTeam1 : usedRolesTeam2;
         const autoRole = getAvailableRole(otherRoles);
         otherRoles.add(autoRole.role);
+        playFitSound(remaining, autoRole.role);
 
         const autoDiv = document.createElement("div");
         autoDiv.className = "team-player";
@@ -217,7 +229,16 @@ function roll() {
   }, 50);
 }
 
+function playFitSound(player, roleName) {
+  const fit = player.roleFit?.[roleName] || "ok";
+  const sound = new Audio(`sounds/${fit}.mp3`);
+  sound.volume = 0.6;
+  sound.play();
+}
+
 function resetGame() {
+
+  window.location.href = "choose.html";
   round = 0;
   usedRolesTeam1.clear();
   usedRolesTeam2.clear();
@@ -250,5 +271,6 @@ function resetGame() {
   updateSelectedCount();
 
   allPlayers.forEach(p => updatePlayerStatusUI(p.name, false));
+  
 }
 
