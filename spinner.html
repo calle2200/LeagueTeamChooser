@@ -22,8 +22,10 @@
     <div class="carousel" id="carousel"></div>
   </div>
 
-  <button class="btn hidden" id="rollBtn" onclick="roll()">Snurra!</button>
-  <button class="btn hidden" id="resetBtn" onclick="resetGame()">Börja om</button>
+  <div class="button-wrapper">
+  <button class="circle-btn" id="resetBtn" onclick="resetGame()" title="Börja om">⟲</button>
+  <button class="btn" id="rollBtn" onclick="roll()">Snurra!</button>
+</div>
 
   <script src="data.js"></script>
   <script src="spinner.js"></script>

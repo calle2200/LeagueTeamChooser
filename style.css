@@ -293,6 +293,47 @@ body {
   z-index: 2;
 }
 
+.team-player {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.team-player img.player-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #fff;
+}
+
+.team-player img.role-img {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.button-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  height: 60px; 
+}
+
+#rollBtn {
+  z-index: 1; 
+}
+
+#resetBtn {
+  position: absolute;
+  right: 100%; 
+  margin-right: 12px; 
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .btn {
   padding: 12px 32px;
   background: linear-gradient(145deg, #0a2a43, #113456);
@@ -316,25 +357,25 @@ body {
   transform: scale(1.03);
 }
 
-.team-player {
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-  font-size: 18px;
-}
-
-.team-player img.player-img {
-  width: 50px;
-  height: 50px;
+.circle-btn {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  margin-right: 10px;
-  border: 2px solid #fff;
+  background: linear-gradient(145deg, #0a2a43, #113456);
+  color: #f0e6d2;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2px solid #685500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00000055;
 }
 
-.team-player img.role-img {
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
+.circle-btn:hover {
+  background: linear-gradient(145deg, #113456, #1b3c66);
+  box-shadow: 0 0 12px #685500;
+  color: #fff4d0;
+  transform: scale(1.1);
 }
 
 
