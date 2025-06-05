@@ -2,33 +2,128 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Spinner</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
+  <div class="teams" id="gameSection">
+    <!-- Team 1 -->
+    <div class="team" id="team1">
+      <h3>Lag 1</h3>
+      <div class="teamPlaceholder-wrapper">
+        <div class="teamPlaceholder">
+          <img src="images/lanes/toplane.png" alt="Toplane" />
+        </div>
+        <div class="lane-text-container">
+          <span class="lane-name">Toplane</span>
+          <span class="player-name"></span>
+        </div>
+      </div>
+      <div class="teamPlaceholder-wrapper">
+        <div class="teamPlaceholder">
+          <img src="images/lanes/jungle.png" alt="Jungle" />
+        </div>
+        <div class="lane-text-container">
+          <span class="lane-name">Jungle</span>
+          <span class="player-name"></span>
+        </div>
+      </div>
+      <div class="teamPlaceholder-wrapper">
+        <div class="teamPlaceholder">
+          <img src="images/lanes/midlane.png" alt="Midlane" />
+        </div>
+        <div class="lane-text-container">
+          <span class="lane-name">Midlane</span>
+          <span class="player-name"></span>
+        </div>
+      </div>
+      <div class="teamPlaceholder-wrapper">
+        <div class="teamPlaceholder">
+          <img src="images/lanes/botlane.png" alt="ADC" />
+        </div>
+        <div class="lane-text-container">
+          <span class="lane-name">ADC</span>
+          <span class="player-name"></span>
+        </div>
+      </div>
+      <div class="teamPlaceholder-wrapper">
+        <div class="teamPlaceholder">
+          <img src="images/lanes/support.png" alt="Support" />
+        </div>
+        <div class="lane-text-container">
+          <span class="lane-name">Support</span>
+          <span class="player-name"></span>
+        </div>
+      </div>
+    </div>
 
-
-  <!-- Main Game View -->
-  <div class="teams hidden" id="gameSection">
-    <div class="team" id="team1"><h3>Lag 1</h3></div>
-    <div class="team" id="team2"><h3>Lag 2</h3></div>
+    <!-- Team 2 -->
+    <div class="team" id="team2">
+      <h3>Lag 2</h3>
+      <!-- Samma struktur som team 1 men med lane-left-text klass för att vända ordningen -->
+      <div class="teamPlaceholder-wrapper lane-left-text">
+        <div class="lane-text-container">
+          <span class="lane-name">Toplane</span>
+          <span class="player-name"></span>
+        </div>
+        <div class="teamPlaceholder">
+          <img src="images/lanes/toplane.png" alt="Toplane" />
+        </div>
+      </div>
+      <div class="teamPlaceholder-wrapper lane-left-text">
+        <div class="lane-text-container">
+          <span class="lane-name">Jungle</span>
+          <span class="player-name"></span>
+        </div>
+        <div class="teamPlaceholder">
+          <img src="images/lanes/jungle.png" alt="Jungle" />
+        </div>
+      </div>
+      <div class="teamPlaceholder-wrapper lane-left-text">
+        <div class="lane-text-container">
+          <span class="lane-name">Midlane</span>
+          <span class="player-name"></span>
+        </div>
+        <div class="teamPlaceholder">
+          <img src="images/lanes/midlane.png" alt="Midlane" />
+        </div>
+      </div>
+      <div class="teamPlaceholder-wrapper lane-left-text">
+        <div class="lane-text-container">
+          <span class="lane-name">ADC</span>
+          <span class="player-name"></span>
+        </div>
+        <div class="teamPlaceholder">
+          <img src="images/lanes/botlane.png" alt="ADC" />
+        </div>
+      </div>
+      <div class="teamPlaceholder-wrapper lane-left-text">
+        <div class="lane-text-container">
+          <span class="lane-name">Support</span>
+          <span class="player-name"></span>
+        </div>
+        <div class="teamPlaceholder">
+          <img src="images/lanes/support.png" alt="Support" />
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="carousel-container hidden" id="carouselContainer">
+  <div class="carousel-container" id="carouselContainer">
     <div class="indicator"></div>
     <div class="carousel" id="carousel"></div>
   </div>
 
   <div class="button-wrapper">
-  <button class="circle-btn" id="resetBtn" onclick="resetGame()" title="Börja om">⟲</button>
-  <button class="btn" id="rollBtn" onclick="roll()">Snurra!</button>
-</div>
+    <button class="circle-btn" id="resetBtn" onclick="resetGame()" title="Börja om">⟲</button>
+    <button class="btn" id="rollBtn" onclick="roll()">Snurra!</button>
+  </div>
 
   <script src="data.js"></script>
   <script src="spinner.js"></script>
-  
+
 </body>
 </html>

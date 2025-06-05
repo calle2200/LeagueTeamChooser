@@ -53,9 +53,84 @@ body {
 
 .placeholder.filled {
   border: none;
-  box-shadow: 0 0 12px #4aa8ff, 0 0 25px #4aa8ff66;
+  box-shadow: 0 0 12px hsl(209, 100%, 65%), 0 0 25px #4aa8ff66;
   animation: pulse 1s ease;
 }
+
+.teamPlaceholder {
+  position: relative;
+  width: 65px;
+  height: 65px;
+  border: 2px solid #685500;
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background: #1e1e1e;
+  box-shadow: 0 0 5px #fff2, 0 0 10px #fff1 inset;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.teamPlaceholder.filled {
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 10px hsl(209, 100%, 65%), 0 0 25px #4aa8ff66;
+  animation: pulse 1s ease;
+}
+
+.teamPlaceholder img {
+  width: 70%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.teamPlaceholder img.player-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+
+.teamPlaceholder-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  gap: 8px;
+  position: relative;
+  width: fit-content;
+}
+
+.lane-left-text {
+  flex-direction: row-reverse;
+  
+}
+
+.lane-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: #685500;
+}
+
+.lane-name {
+  font-size: 18px;
+}
+
+.player-name {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #dad2b3;
+  min-height: 16px; /* för att hålla plats även när tom */
+}
+
+
 
 @keyframes pulse {
   0% {
@@ -246,6 +321,13 @@ body {
   margin-bottom: 10px;
 }
 
+#team2 .team-player-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: -9px
+}
+
 .carousel-container {
   background-color: #000614;
   overflow: hidden;
@@ -397,4 +479,10 @@ body {
   .team {
     height: 400px;
   }
+
+  .teamPlaceholder {
+  width: 50px;
+  height: 50px;
+  margin-top: 5px;
+}
 }

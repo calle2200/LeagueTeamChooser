@@ -1,4 +1,3 @@
-
 const playerList = document.getElementById("playerList");
 const selectedPlayersDiv = document.getElementById("selectedPlayers");
 const selectedCountEl = document.getElementById("selectedCount");
@@ -141,6 +140,7 @@ function renderCarousel() {
   }
 }
 
+
 function startGame() {
   if (selectedPlayers.length !== 10) {
     errorDisplay.textContent = "Du måste välja exakt 10 spelare!";
@@ -163,7 +163,7 @@ function roll() {
   }
 
   const isSecondLastSpin = availableItems.length === 2;
-  
+
   carousel.style.transition = "none";
   carousel.style.transform = `translateX(0px)`;
 
@@ -172,7 +172,7 @@ function roll() {
     const itemsPerLoop = availableItems.length;
     const baseIndex = itemsPerLoop + Math.floor(Math.random() * itemsPerLoop);
     const offset = (baseIndex - 1) * itemWidth;
-    
+
 
     carousel.style.transition = "transform 3s cubic-bezier(0.22, 1, 0.36, 1)";
     carousel.style.transform = `translateX(-${offset}px)`;
@@ -186,15 +186,22 @@ function roll() {
       usedRoles.add(role.role);
       playFitSound(selected, role.role);
 
-      const newDiv = document.createElement("div");
-      newDiv.className = "team-player";
-      newDiv.innerHTML = `
-        <img src="${selected.img}" class="player-img" alt="${selected.name}">
-        <span>${selected.name}</span>
-        <img src="${role.img}" class="role-img" title="${role.role}">
-        <span>${role.role}</span>
-      `;
-      currentTeam.appendChild(newDiv);
+      const placeholders = currentTeam.querySelectorAll(".teamPlaceholder");
+      for (let ph of placeholders) {
+        if (!ph.classList.contains("filled")) {
+          ph.innerHTML = `
+  <img src="${selected.img}" class="player-img" alt="${selected.name}">
+`;
+
+          ph.classList.add("filled");
+          const playerNameSpan = ph.parentElement.querySelector('.player-name');
+if (playerNameSpan) {
+  playerNameSpan.textContent = selected.name;
+}
+          break;
+        }
+      }
+
 
       let message = ` ${selected.name} går till ${round % 2 === 0 ? "Lag 1" : "Lag 2"} som ${role.role}!`;
       availableItems = availableItems.filter(p => p.name !== selected.name);
@@ -208,22 +215,29 @@ function roll() {
         otherRoles.add(autoRole.role);
         playFitSound(remaining, autoRole.role);
 
-        const autoDiv = document.createElement("div");
-        autoDiv.className = "team-player";
-        autoDiv.innerHTML = `
-          <img src="${remaining.img}" class="player-img" alt="${remaining.name}">
-          <span>${remaining.name}</span>
-          <img src="${autoRole.img}" class="role-img" title="${autoRole.role}">
-          <span>${autoRole.role}</span>
-        `;
-        otherTeam.appendChild(autoDiv);
+        const otherPlaceholders = otherTeam.querySelectorAll(".teamPlaceholder");
+        for (let ph of otherPlaceholders) {
+          if (!ph.classList.contains("filled")) {
+            ph.innerHTML = `
+  <img src="${remaining.img}" class="player-img" alt="${remaining.name}">
+`;
+
+            ph.classList.add("filled");
+            const playerNameSpan = ph.parentElement.querySelector('.player-name');
+if (playerNameSpan) {
+  playerNameSpan.textContent = remaining.name;
+}
+            break;
+          }
+        }
+
 
         message += `\n🪄 ${remaining.name} går automatiskt till ${round % 2 === 0 ? "Lag 1" : "Lag 2"} som ${autoRole.role}!`;
         availableItems = [];
         round++;
       }
 
-      
+
       renderCarousel();
     }, 3100);
   }, 50);
@@ -254,7 +268,7 @@ function resetGame() {
   carouselContainer.classList.add("hidden");
   rollBtn.classList.add("hidden");
   resetBtn.classList.add("hidden");
-  
+
 
   document.querySelectorAll("input[type='checkbox']").forEach(cb => cb.checked = false);
 
@@ -271,6 +285,5 @@ function resetGame() {
   updateSelectedCount();
 
   allPlayers.forEach(p => updatePlayerStatusUI(p.name, false));
-  
-}
 
+}
