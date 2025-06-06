@@ -150,6 +150,16 @@ const allPlayers = [
     }
   },
   {
+    name: "Twistedninja", img: "images/icons/ahri.jpg",
+    roleFit: {
+      Toplane: "ok",
+      Jungle: "ok",
+      Midlane: "ok",
+      Botlane: "ok",
+      Support: "ok"
+    }
+  },
+  {
     name: "Guest1", img: "images/icons/icon.png",
     roleFit: {
       Toplane: "ok",

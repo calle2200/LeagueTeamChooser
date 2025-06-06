@@ -162,6 +162,8 @@ function roll() {
     return;
   }
 
+  rollBtn.disabled = true;
+
   const isSecondLastSpin = availableItems.length === 2;
 
   carousel.style.transition = "none";
@@ -239,6 +241,7 @@ if (playerNameSpan) {
 
 
       renderCarousel();
+      rollBtn.disabled = false;
     }, 3100);
   }, 50);
 }
