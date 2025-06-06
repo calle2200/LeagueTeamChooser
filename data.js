@@ -1,6 +1,6 @@
 const allPlayers = [
   {
-    name: "Daddyshooker", img: "images/icons/icon.png",
+    name: "Daddyshooker", img: "images/icons/karma.webp",
     roleFit: {
       Toplane: "ok",
       Jungle: "ok",
@@ -10,7 +10,7 @@ const allPlayers = [
     }
   },
   {
-    name: "Dedona", img: "images/icons/icon.png",
+    name: "Dedona", img: "images/icons/smolder.jpeg",
     roleFit: {
       Toplane: "good",
       Jungle: "bad",
@@ -40,7 +40,7 @@ const allPlayers = [
     }
   },
   {
-    name: "Fnorkos", img: "images/icons/icon.png",
+    name: "Fnorkos", img: "images/icons/anivia.jpg",
     roleFit: {
       Toplane: "ok",
       Jungle: "ok",
@@ -50,7 +50,7 @@ const allPlayers = [
     }
   },
   {
-    name: "Lampskaerm", img: "images/icons/icon.png",
+    name: "Lampskaerm", img: "images/icons/soraka.webp",
     roleFit: {
       Toplane: "ok",
       Jungle: "bad",
@@ -80,7 +80,7 @@ const allPlayers = [
     }
   },
   {
-    name: "Moses", img: "images/icons/icon.png",
+    name: "Moses", img: "images/icons/poppy.png",
     roleFit: {
       Toplane: "ok",
       Jungle: "good",
@@ -90,7 +90,7 @@ const allPlayers = [
     }
   },
   {
-    name: "PelleSvanslös", img: "images/icons/icon.png",
+    name: "PelleSvanslös", img: "images/icons/sett.webp",
     roleFit: {
       Toplane: "main",
       Jungle: "ok",
@@ -100,7 +100,7 @@ const allPlayers = [
     }
   },
   {
-    name: "Rez", img: "images/icons/icon.png",
+    name: "Rez", img: "images/icons/nocturne.jpg",
     roleFit: {
       Toplane: "good",
       Jungle: "main",
@@ -110,7 +110,7 @@ const allPlayers = [
     }
   },
   {
-    name: "Saedobity", img: "images/icons/icon.png",
+    name: "Saedobity", img: "images/icons/mundo.jpg",
     roleFit: {
       Toplane: "ok",
       Jungle: "good",

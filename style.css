@@ -265,9 +265,10 @@ body {
 }
 
 .list-player-img {
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #685500;
+  border-radius: 50%;
   object-fit: cover;
   margin-right: 10px;
 }
